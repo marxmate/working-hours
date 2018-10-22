@@ -1,0 +1,15 @@
+version: '2'
+services:
+    workinghours-app:
+        image: workinghours
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://workinghours-postgresql:5432/workinghours
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    workinghours-postgresql:
+        extends:
+            file: postgresql.yml
+            service: workinghours-postgresql
