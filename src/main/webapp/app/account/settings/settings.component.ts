@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { JhiLanguageService } from 'ng-jhipster';
 
-import { Principal, AccountService, JhiLanguageHelper } from 'app/core';
+import { AccountService, JhiLanguageHelper, Principal } from 'app/core';
 
 @Component({
-    selector: 'jhi-settings',
+    selector: 'wh-settings',
     templateUrl: './settings.component.html'
 })
 export class SettingsComponent implements OnInit {

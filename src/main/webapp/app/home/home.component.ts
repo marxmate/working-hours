@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { LoginModalService, Principal, Account } from 'app/core';
+import { Account, LoginModalService, Principal } from 'app/core';
 
 @Component({
-    selector: 'jhi-home',
+    selector: 'wh-home',
     templateUrl: './home.component.html',
     styleUrls: ['home.scss']
 })

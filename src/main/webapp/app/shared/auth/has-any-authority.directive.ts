@@ -7,13 +7,13 @@ import { Principal } from 'app/core/auth/principal.service';
  *
  * @howToUse
  * ```
- *     <some-element *jhiHasAnyAuthority="'ROLE_ADMIN'">...</some-element>
+ *     <some-element *whHasAnyAuthority="'ROLE_ADMIN'">...</some-element>
  *
- *     <some-element *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">...</some-element>
+ *     <some-element *whHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">...</some-element>
  * ```
  */
 @Directive({
-    selector: '[jhiHasAnyAuthority]'
+    selector: '[whHasAnyAuthority]'
 })
 export class HasAnyAuthorityDirective {
     private authorities: string[];
@@ -21,7 +21,7 @@ export class HasAnyAuthorityDirective {
     constructor(private principal: Principal, private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
 
     @Input()
-    set jhiHasAnyAuthority(value: string | string[]) {
+    set whHasAnyAuthority(value: string | string[]) {
         this.authorities = typeof value === 'string' ? [value] : value;
         this.updateView();
         // Get notified each time authentication state changes.

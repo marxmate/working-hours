@@ -1,30 +1,30 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WorkinghoursTestModule } from '../../../test.module';
-import { JhiMetricsMonitoringModalComponent } from 'app/admin/metrics/metrics-modal.component';
-import { JhiMetricsService } from 'app/admin/metrics/metrics.service';
+import { WhMetricsMonitoringModalComponent } from 'app/admin/metrics/metrics-modal.component';
+import { WhMetricsService } from 'app/admin/metrics/metrics.service';
 
 describe('Component Tests', () => {
-    describe('JhiMetricsMonitoringModalComponent', () => {
-        let comp: JhiMetricsMonitoringModalComponent;
-        let fixture: ComponentFixture<JhiMetricsMonitoringModalComponent>;
-        let service: JhiMetricsService;
+    describe('WhMetricsMonitoringModalComponent', () => {
+        let comp: WhMetricsMonitoringModalComponent;
+        let fixture: ComponentFixture<WhMetricsMonitoringModalComponent>;
+        let service: WhMetricsService;
 
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [WorkinghoursTestModule],
-                declarations: [JhiMetricsMonitoringModalComponent]
+        beforeEach(
+            async(() => {
+                TestBed.configureTestingModule({
+                    imports: [WorkinghoursTestModule],
+                    declarations: [WhMetricsMonitoringModalComponent]
+                })
+                    .overrideTemplate(WhMetricsMonitoringModalComponent, '')
+                    .compileComponents();
             })
-                .overrideTemplate(JhiMetricsMonitoringModalComponent, '')
-                .compileComponents();
-        }));
+        );
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(JhiMetricsMonitoringModalComponent);
+            fixture = TestBed.createComponent(WhMetricsMonitoringModalComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(JhiMetricsService);
+            service = fixture.debugElement.injector.get(WhMetricsService);
         });
 
         describe('ngOnInit', () => {

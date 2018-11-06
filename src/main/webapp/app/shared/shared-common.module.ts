@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { WorkinghoursSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
+import { FindLanguageFromKeyPipe, WhAlertComponent, WhAlertErrorComponent, WorkinghoursSharedLibsModule } from './';
 
 @NgModule({
     imports: [WorkinghoursSharedLibsModule],
-    declarations: [FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent],
-    exports: [WorkinghoursSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent]
+    declarations: [FindLanguageFromKeyPipe, WhAlertComponent, WhAlertErrorComponent],
+    exports: [WorkinghoursSharedLibsModule, FindLanguageFromKeyPipe, WhAlertComponent, WhAlertErrorComponent]
 })
 export class WorkinghoursSharedCommonModule {}

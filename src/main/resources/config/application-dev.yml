@@ -31,10 +31,9 @@ spring:
     jackson:
         serialization.indent_output: true
     datasource:
-        type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/workinghours
         username: workinghours
-        password:
+        password: adz!fm~j
         hikari:
             auto-commit: false
     jpa:

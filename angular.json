@@ -12,19 +12,19 @@
   },
   "defaultProject": "workinghours",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "npm"
   },
   "schematics": {
     "@schematics/angular:component": {
       "inlineStyle": true,
       "inlineTemplate": false,
       "spec": false,
-      "prefix": "jhi",
+      "prefix": "wh",
       "styleExt": "scss"
     },
     "@schematics/angular:directive": {
       "spec": false,
-      "prefix": "jhi"
+      "prefix": "wh"
     },
     "@schematics/angular:guard": {
       "spec": false

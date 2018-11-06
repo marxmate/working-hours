@@ -1,0 +1,24 @@
+
+{
+    "workinghoursApp": {
+        "schedule" : {
+            "home": {
+                "title": "Beosztás",
+                "createLabel": "Egy új beosztás létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson beosztást"
+            },
+            "created": "Egy új beosztás lett létrehozva {{ param }} azonosítóval",
+            "updated": "A beosztás módosítva lett {{ param }} azonosítóval",
+            "deleted": "A beosztás törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné a beosztást {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Beosztás"
+            },
+            "user": "Felhasználó",
+            "scheduleType": "Beosztás típus",
+            "date": "Dátum"
+        }
+    }
+}

@@ -1,25 +1,25 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 import { WorkinghoursSharedModule } from 'app/shared';
-/* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
-
 import {
     adminState,
     AuditsComponent,
+    LogsComponent,
     UserMgmtComponent,
+    UserMgmtDeleteDialogComponent,
     UserMgmtDetailComponent,
     UserMgmtUpdateComponent,
-    UserMgmtDeleteDialogComponent,
-    LogsComponent,
-    JhiMetricsMonitoringModalComponent,
-    JhiMetricsMonitoringComponent,
-    JhiHealthModalComponent,
-    JhiHealthCheckComponent,
-    JhiConfigurationComponent,
-    JhiDocsComponent
+    WhConfigurationComponent,
+    WhDocsComponent,
+    WhHealthCheckComponent,
+    WhHealthModalComponent,
+    WhMetricsMonitoringComponent,
+    WhMetricsMonitoringModalComponent
 } from './';
+
+/* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 @NgModule({
     imports: [
@@ -34,14 +34,14 @@ import {
         UserMgmtUpdateComponent,
         UserMgmtDeleteDialogComponent,
         LogsComponent,
-        JhiConfigurationComponent,
-        JhiHealthCheckComponent,
-        JhiHealthModalComponent,
-        JhiDocsComponent,
-        JhiMetricsMonitoringComponent,
-        JhiMetricsMonitoringModalComponent
+        WhConfigurationComponent,
+        WhHealthCheckComponent,
+        WhHealthModalComponent,
+        WhDocsComponent,
+        WhMetricsMonitoringComponent,
+        WhMetricsMonitoringModalComponent
     ],
-    entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent, JhiMetricsMonitoringModalComponent],
+    entryComponents: [UserMgmtDeleteDialogComponent, WhHealthModalComponent, WhMetricsMonitoringModalComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class WorkinghoursAdminModule {

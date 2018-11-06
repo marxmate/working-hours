@@ -1,30 +1,31 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { WorkinghoursTestModule } from '../../../test.module';
-import { JhiMetricsMonitoringComponent } from 'app/admin/metrics/metrics.component';
-import { JhiMetricsService } from 'app/admin/metrics/metrics.service';
+import { WhMetricsMonitoringComponent } from 'app/admin/metrics/metrics.component';
+import { WhMetricsService } from 'app/admin/metrics/metrics.service';
 
 describe('Component Tests', () => {
-    describe('JhiMetricsMonitoringComponent', () => {
-        let comp: JhiMetricsMonitoringComponent;
-        let fixture: ComponentFixture<JhiMetricsMonitoringComponent>;
-        let service: JhiMetricsService;
+    describe('WhMetricsMonitoringComponent', () => {
+        let comp: WhMetricsMonitoringComponent;
+        let fixture: ComponentFixture<WhMetricsMonitoringComponent>;
+        let service: WhMetricsService;
 
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [WorkinghoursTestModule],
-                declarations: [JhiMetricsMonitoringComponent]
+        beforeEach(
+            async(() => {
+                TestBed.configureTestingModule({
+                    imports: [WorkinghoursTestModule],
+                    declarations: [WhMetricsMonitoringComponent]
+                })
+                    .overrideTemplate(WhMetricsMonitoringComponent, '')
+                    .compileComponents();
             })
-                .overrideTemplate(JhiMetricsMonitoringComponent, '')
-                .compileComponents();
-        }));
+        );
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(JhiMetricsMonitoringComponent);
+            fixture = TestBed.createComponent(WhMetricsMonitoringComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(JhiMetricsService);
+            service = fixture.debugElement.injector.get(WhMetricsService);
         });
 
         describe('refresh', () => {

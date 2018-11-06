@@ -1,33 +1,32 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { WorkinghoursTestModule } from '../../../test.module';
-import { JhiConfigurationComponent } from 'app/admin/configuration/configuration.component';
-import { JhiConfigurationService } from 'app/admin/configuration/configuration.service';
-import { ITEMS_PER_PAGE } from 'app/shared';
-import { Log } from 'app/admin';
+import { WhConfigurationComponent } from 'app/admin/configuration/configuration.component';
+import { WhConfigurationService } from 'app/admin/configuration/configuration.service';
 
 describe('Component Tests', () => {
-    describe('JhiConfigurationComponent', () => {
-        let comp: JhiConfigurationComponent;
-        let fixture: ComponentFixture<JhiConfigurationComponent>;
-        let service: JhiConfigurationService;
+    describe('WhConfigurationComponent', () => {
+        let comp: WhConfigurationComponent;
+        let fixture: ComponentFixture<WhConfigurationComponent>;
+        let service: WhConfigurationService;
 
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [WorkinghoursTestModule],
-                declarations: [JhiConfigurationComponent],
-                providers: [JhiConfigurationService]
+        beforeEach(
+            async(() => {
+                TestBed.configureTestingModule({
+                    imports: [WorkinghoursTestModule],
+                    declarations: [WhConfigurationComponent],
+                    providers: [WhConfigurationService]
+                })
+                    .overrideTemplate(WhConfigurationComponent, '')
+                    .compileComponents();
             })
-                .overrideTemplate(JhiConfigurationComponent, '')
-                .compileComponents();
-        }));
+        );
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(JhiConfigurationComponent);
+            fixture = TestBed.createComponent(WhConfigurationComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(JhiConfigurationService);
+            service = fixture.debugElement.injector.get(WhConfigurationService);
         });
 
         describe('OnInit', () => {

@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="wh-schedule-type-wh-heading" jhiTranslate="workinghoursApp.scheduleType.home.createOrEditLabel">Create or edit a Schedule Type</h2>
+            <div>
+                <wh-alert-error></wh-alert-error>
+                <div class="form-group" [hidden]="!scheduleType.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="scheduleType.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="workinghoursApp.scheduleType.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="scheduleType.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="workinghoursApp.scheduleType.fromTime" for="field_fromTime">From Time</label>
+                    <input type="text" class="form-control" name="fromTime" id="field_fromTime"
+                        [(ngModel)]="scheduleType.fromTime" required pattern="\d{2}:\d{2}"/>
+                    <div [hidden]="!(editForm.controls.fromTime?.dirty && editForm.controls.fromTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fromTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.fromTime?.errors?.pattern" jhiTranslate="entity.validation.pattern" translateValues="{ pattern: 'From Time' }">
+                            This field should follow pattern for "From Time".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="workinghoursApp.scheduleType.toTime" for="field_toTime">To Time</label>
+                    <input type="text" class="form-control" name="toTime" id="field_toTime"
+                        [(ngModel)]="scheduleType.toTime" required pattern="\d{2}:\d{2}"/>
+                    <div [hidden]="!(editForm.controls.toTime?.dirty && editForm.controls.toTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.toTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.toTime?.errors?.pattern" jhiTranslate="entity.validation.pattern" translateValues="{ pattern: 'To Time' }">
+                            This field should follow pattern for "To Time".
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

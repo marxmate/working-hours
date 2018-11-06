@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { JhiAlertService } from 'ng-jhipster';
 
 @Component({
-    selector: 'jhi-alert',
+    selector: 'wh-alert',
     template: `
         <div class="alerts" role="alert">
             <div *ngFor="let alert of alerts" [ngClass]="setClasses(alert)">
@@ -12,7 +12,7 @@ import { JhiAlertService } from 'ng-jhipster';
             </div>
         </div>`
 })
-export class JhiAlertComponent implements OnInit, OnDestroy {
+export class WhAlertComponent implements OnInit, OnDestroy {
     alerts: any[];
 
     constructor(private alertService: JhiAlertService) {}

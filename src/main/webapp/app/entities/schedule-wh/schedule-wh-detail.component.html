@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="schedule">
+            <h2><span jhiTranslate="workinghoursApp.schedule.detail.title">Schedule</span> {{schedule.id}}</h2>
+            <hr>
+            <wh-alert-error></wh-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="workinghoursApp.schedule.user">User</span></dt>
+                <dd>
+                    <span>{{schedule.user}}</span>
+                </dd>
+                <dt><span jhiTranslate="workinghoursApp.schedule.scheduleType">Schedule Type</span></dt>
+                <dd>
+                    <span>{{schedule.scheduleType}}</span>
+                </dd>
+                <dt><span jhiTranslate="workinghoursApp.schedule.date">Date</span></dt>
+                <dd>
+                    <span>{{schedule.date}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule-wh', schedule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -9,8 +9,9 @@ import com.hatosugar.workinghours.security.AuthoritiesConstants;
 import com.hatosugar.workinghours.security.SecurityUtils;
 import com.hatosugar.workinghours.service.dto.UserDTO;
 import com.hatosugar.workinghours.service.util.RandomUtil;
-import com.hatosugar.workinghours.web.rest.errors.*;
-
+import com.hatosugar.workinghours.web.rest.errors.EmailAlreadyUsedException;
+import com.hatosugar.workinghours.web.rest.errors.InvalidPasswordException;
+import com.hatosugar.workinghours.web.rest.errors.LoginAlreadyUsedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -23,7 +24,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -78,7 +83,7 @@ public class UserService {
 
     public Optional<User> requestPasswordReset(String mail) {
         return userRepository.findOneByEmailIgnoreCase(mail)
-            .filter(User::getActivated)
+            .filter(User::isActivated)
             .map(user -> {
                 user.setResetKey(RandomUtil.generateResetKey());
                 user.setResetDate(Instant.now());
@@ -89,7 +94,7 @@ public class UserService {
 
     public User registerUser(UserDTO userDTO, String password) {
         userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
-            if (!existingUser.getActivated()) {
+            if (!existingUser.isActivated()) {
                 userRepository.delete(existingUser);
                 this.clearUserCaches(existingUser);
             } else {
@@ -97,7 +102,7 @@ public class UserService {
             }
         });
         userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).ifPresent(existingUser -> {
-            if (!existingUser.getActivated()) {
+            if (!existingUser.isActivated()) {
                 userRepository.delete(existingUser);
                 userRepository.flush();
                 this.clearUserCaches(existingUser);
@@ -159,15 +164,6 @@ public class UserService {
         return user;
     }
 
-    /**
-     * Update basic information (first name, last name, email, language) for the current user.
-     *
-     * @param firstName first name of user
-     * @param lastName last name of user
-     * @param email email id of user
-     * @param langKey language key
-     * @param imageUrl image URL of user
-     */
     public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
         SecurityUtils.getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
@@ -182,12 +178,6 @@ public class UserService {
             });
     }
 
-    /**
-     * Update all information for a specific user, and return the modified user.
-     *
-     * @param userDTO user to update
-     * @return updated user
-     */
     public Optional<UserDTO> updateUser(UserDTO userDTO) {
         return Optional.of(userRepository
             .findById(userDTO.getId()))
@@ -202,13 +192,13 @@ public class UserService {
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
                 user.setLangKey(userDTO.getLangKey());
-                Set<Authority> managedAuthorities = user.getAuthorities();
+                Set<String> managedAuthorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
                 managedAuthorities.clear();
                 userDTO.getAuthorities().stream()
                     .map(authorityRepository::findById)
                     .filter(Optional::isPresent)
                     .map(Optional::get)
-                    .forEach(managedAuthorities::add);
+                    .forEach(a -> managedAuthorities.add(a.getName()));
                 this.clearUserCaches(user);
                 log.debug("Changed Information for User: {}", user);
                 return user;
@@ -259,11 +249,6 @@ public class UserService {
         return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);
     }
 
-    /**
-     * Not activated users should be automatically deleted after 3 days.
-     * <p>
-     * This is scheduled to get fired everyday, at 01:00 (am).
-     */
     @Scheduled(cron = "0 0 1 * * ?")
     public void removeNotActivatedUsers() {
         userRepository
@@ -275,9 +260,6 @@ public class UserService {
             });
     }
 
-    /**
-     * @return a list of all the authorities
-     */
     public List<String> getAuthorities() {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }

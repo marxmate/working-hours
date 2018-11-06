@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
-import { Principal, UserService, User } from 'app/core';
+import { Principal, User, UserService } from 'app/core';
 import { UserMgmtDeleteDialogComponent } from 'app/admin';
 
 @Component({
-    selector: 'jhi-user-mgmt',
+    selector: 'wh-user-mgmt',
     templateUrl: './user-management.component.html'
 })
 export class UserMgmtComponent implements OnInit, OnDestroy {

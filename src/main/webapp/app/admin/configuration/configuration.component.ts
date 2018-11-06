@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { JhiConfigurationService } from './configuration.service';
+import { WhConfigurationService } from './configuration.service';
 
 @Component({
-    selector: 'jhi-configuration',
+    selector: 'wh-configuration',
     templateUrl: './configuration.component.html'
 })
-export class JhiConfigurationComponent implements OnInit {
+export class WhConfigurationComponent implements OnInit {
     allConfiguration: any = null;
     configuration: any = null;
     configKeys: any[];
@@ -14,7 +14,7 @@ export class JhiConfigurationComponent implements OnInit {
     orderProp: string;
     reverse: boolean;
 
-    constructor(private configurationService: JhiConfigurationService) {
+    constructor(private configurationService: WhConfigurationService) {
         this.configKeys = [];
         this.filter = '';
         this.orderProp = 'prefix';

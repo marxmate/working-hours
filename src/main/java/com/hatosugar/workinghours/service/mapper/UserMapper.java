@@ -3,18 +3,13 @@ package com.hatosugar.workinghours.service.mapper;
 import com.hatosugar.workinghours.domain.Authority;
 import com.hatosugar.workinghours.domain.User;
 import com.hatosugar.workinghours.service.dto.UserDTO;
-
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Mapper for the entity User and its DTO called UserDTO.
- *
- * Normal mappers are generated using MapStruct, this one is hand-coded as MapStruct
- * support is still in beta, and requires a manual step with an IDE.
- */
 @Service
 public class UserMapper {
 
@@ -42,9 +37,11 @@ public class UserMapper {
             user.setImageUrl(userDTO.getImageUrl());
             user.setActivated(userDTO.isActivated());
             user.setLangKey(userDTO.getLangKey());
-            Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
+            Set<String> authorities = userDTO.getAuthorities();
             if (authorities != null) {
-                user.setAuthorities(authorities);
+                user.setAuthorities(authorities.stream()
+                    .map(Authority::new)
+                    .collect(Collectors.toSet()));
             }
             return user;
         }
@@ -67,10 +64,8 @@ public class UserMapper {
     }
 
     public Set<Authority> authoritiesFromStrings(Set<String> strings) {
-        return strings.stream().map(string -> {
-            Authority auth = new Authority();
-            auth.setName(string);
-            return auth;
-        }).collect(Collectors.toSet());
+        return strings.stream()
+            .map(Authority::new)
+            .collect(Collectors.toSet());
     }
 }

@@ -20,7 +20,6 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         contentBase: './target/www',
         proxy: [{
             context: [
-                /* jhipster-needle-add-entity-to-webpack - JHipster will add entity api paths here */
                 '/api',
                 '/management',
                 '/swagger-resources',
@@ -84,16 +83,16 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         },
         {
             test: /\.scss$/,
-            use: ['to-string-loader', 'css-loader', { 
-                loader: 'sass-loader', 
+            use: ['to-string-loader', 'css-loader', {
+                loader: 'sass-loader',
                 options: { implementation: sass }
             }],
             exclude: /(vendor\.scss|global\.scss)/
         },
         {
             test: /(vendor\.scss|global\.scss)/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', { 
-                loader: 'sass-loader', 
+            use: ['style-loader', 'css-loader', 'postcss-loader', {
+                loader: 'sass-loader',
                 options: { implementation: sass }
             }]
         },

@@ -1,36 +1,38 @@
-import { ComponentFixture, TestBed, async, inject, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { WorkinghoursTestModule } from '../../../test.module';
-import { JhiAlertErrorComponent } from 'app/shared/alert/alert-error.component';
+import { WhAlertErrorComponent } from 'app/shared/alert/alert-error.component';
 import { MockAlertService } from '../../../helpers/mock-alert.service';
 
 describe('Component Tests', () => {
     describe('Alert Error Component', () => {
-        let comp: JhiAlertErrorComponent;
-        let fixture: ComponentFixture<JhiAlertErrorComponent>;
+        let comp: WhAlertErrorComponent;
+        let fixture: ComponentFixture<WhAlertErrorComponent>;
         let eventManager: JhiEventManager;
 
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [WorkinghoursTestModule, TranslateModule.forRoot()],
-                declarations: [JhiAlertErrorComponent],
-                providers: [
-                    JhiEventManager,
-                    {
-                        provide: JhiAlertService,
-                        useClass: MockAlertService
-                    }
-                ]
+        beforeEach(
+            async(() => {
+                TestBed.configureTestingModule({
+                    imports: [WorkinghoursTestModule, TranslateModule.forRoot()],
+                    declarations: [WhAlertErrorComponent],
+                    providers: [
+                        JhiEventManager,
+                        {
+                            provide: JhiAlertService,
+                            useClass: MockAlertService
+                        }
+                    ]
+                })
+                    .overrideTemplate(WhAlertErrorComponent, '')
+                    .compileComponents();
             })
-                .overrideTemplate(JhiAlertErrorComponent, '')
-                .compileComponents();
-        }));
+        );
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(JhiAlertErrorComponent);
+            fixture = TestBed.createComponent(WhAlertErrorComponent);
             comp = fixture.componentInstance;
             eventManager = fixture.debugElement.injector.get(JhiEventManager);
         });

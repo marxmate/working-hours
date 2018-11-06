@@ -1,0 +1,58 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="workinghoursApp.scheduleType.home.title">Schedule Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-schedule-type-wh" [routerLink]="['/schedule-type-wh/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="workinghoursApp.scheduleType.home.createLabel">
+            Create new Schedule Type
+            </span>
+        </button>
+    </h2>
+    <wh-alert></wh-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="scheduleTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="workinghoursApp.scheduleType.name">Name</span></th>
+            <th><span jhiTranslate="workinghoursApp.scheduleType.fromTime">From Time</span></th>
+            <th><span jhiTranslate="workinghoursApp.scheduleType.toTime">To Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let scheduleType of scheduleTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/schedule-type-wh', scheduleType.id, 'view' ]">{{scheduleType.id}}</a></td>
+                <td>{{scheduleType.name}}</td>
+                <td>{{scheduleType.fromTime}}</td>
+                <td>{{scheduleType.toTime}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/schedule-type-wh', scheduleType.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/schedule-type-wh', scheduleType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'schedule-type-wh/'+ scheduleType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
+import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
 
 import { JhiLanguageHelper } from 'app/core';
 
 @Component({
-    selector: 'jhi-main',
+    selector: 'wh-main',
     templateUrl: './main.component.html'
 })
-export class JhiMainComponent implements OnInit {
+export class WhMainComponent implements OnInit {
     constructor(private jhiLanguageHelper: JhiLanguageHelper, private router: Router) {}
 
     private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {

@@ -1,0 +1,24 @@
+
+{
+    "workinghoursApp": {
+        "scheduleType" : {
+            "home": {
+                "title": "Beosztás típusok",
+                "createLabel": "Egy új beosztás típus létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson beosztás típust"
+            },
+            "created": "Egy új beosztás típus lett létrehozva {{ param }} azonosítóval",
+            "updated": "A beosztás típus módosítva lett {{ param }} azonosítóval",
+            "deleted": "A beosztás típus törölve lett {{ param }} azonosítóval",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné a beosztás típust {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Beosztás típus"
+            },
+            "name": "Név",
+            "fromTime": "tól",
+            "toTime": "ig"
+        }
+    }
+}

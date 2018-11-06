@@ -4,7 +4,7 @@ import { Principal } from 'app/core';
 import { PasswordService } from './password.service';
 
 @Component({
-    selector: 'jhi-password',
+    selector: 'wh-password',
     templateUrl: './password.component.html'
 })
 export class PasswordComponent implements OnInit {

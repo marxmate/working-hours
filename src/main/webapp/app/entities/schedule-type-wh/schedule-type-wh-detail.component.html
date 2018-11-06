@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="scheduleType">
+            <h2><span jhiTranslate="workinghoursApp.scheduleType.detail.title">Schedule Type</span> {{scheduleType.id}}</h2>
+            <hr>
+            <wh-alert-error></wh-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="workinghoursApp.scheduleType.name">Name</span></dt>
+                <dd>
+                    <span>{{scheduleType.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="workinghoursApp.scheduleType.fromTime">From Time</span></dt>
+                <dd>
+                    <span>{{scheduleType.fromTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="workinghoursApp.scheduleType.toTime">To Time</span></dt>
+                <dd>
+                    <span>{{scheduleType.toTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="workinghoursApp.scheduleType.name">Name</span></dt>
+                <dd>
+                    <div *ngIf="scheduleType.name">
+                        <a [routerLink]="['/schedule-wh', scheduleType.name?.id, 'view']">{{scheduleType.name?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule-type-wh', scheduleType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer } from '@angular/core';
 import { EMAIL_NOT_FOUND_TYPE } from 'app/shared';
 import { PasswordResetInitService } from './password-reset-init.service';
 
 @Component({
-    selector: 'jhi-password-reset-init',
+    selector: 'wh-password-reset-init',
     templateUrl: './password-reset-init.component.html'
 })
 export class PasswordResetInitComponent implements OnInit, AfterViewInit {

@@ -1,0 +1,25 @@
+
+{
+    "workinghoursApp": {
+        "scheduleType" : {
+            "home": {
+                "title": "Schedule Types",
+                "createLabel": "Create a new Schedule Type",
+                "createOrEditLabel": "Create or edit a Schedule Type"
+            },
+            "created": "A new Schedule Type is created with identifier {{ param }}",
+            "updated": "A Schedule Type is updated with identifier {{ param }}",
+            "deleted": "A Schedule Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Schedule Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Schedule Type"
+            },
+            "name": "Name",
+            "fromTime": "From Time",
+            "toTime": "To Time",
+            "name": "Name"
+        }
+    }
+}
